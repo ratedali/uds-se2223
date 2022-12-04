@@ -2,7 +2,10 @@ package de.uni_saarland.cs.se
 package runtime
 
 import utils.ConfigurationError
-import utils.{ ListStorage, MapStorage, Storage, StorageType }
+import utils.ListStorage
+import utils.MapStorage
+import utils.Storage
+import utils.StorageType
 
 import scala.collection.mutable
 
@@ -66,7 +69,7 @@ class Database(val config: DatabaseConfig) {
   def write(key: String, value: String): Unit =
     if (config.write) {
       if (config.logging) {
-        println(s"Writing value '$value' for key '$key'.")
+        println(s"Writing value '$value' at key '$key'.")
       }
       if (config.transaction) {
         tmpStorage.put(key, value)
