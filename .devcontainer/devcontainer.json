@@ -2,7 +2,5 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/alpine
 {
 	"name": "Scala",
-	"image": "sbtscala/scala-sbt:openjdk-18.0.2.1_1.8.0_3.2.1",
-	"workspaceMount": "source=${localWorkspaceFolder}/02/submission,target=/workspace,type=bind",
-	"workspaceFolder": "/workspace"
+	"image": "sbtscala/scala-sbt:openjdk-18.0.2.1_1.8.0_3.2.1"
 }
