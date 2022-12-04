@@ -1,0 +1,21 @@
+\begin{forest}
+	featureDiagram
+	[Pizza,abstract[Base,abstract,mandatory[Widespead Dough,concrete,mandatory][Tomato Sauce,concrete,mandatory][Cheese,concrete,mandatory]][Paprika,abstract,optional[Corn,concrete,optional][Pineapple,concrete,optional]][Meat,abstract,optional[Pork,abstract,alternative[Ham,concrete,or][Salami,concrete]][Fish,abstract[Salmon,concrete,or][Tuna,concrete]]][Additons,abstract,optional[Garlic,concrete,or][Chilli,concrete]]]	
+	\matrix [anchor=north west] at (current bounding box.north east) {
+		\node [placeholder] {}; \\
+	};
+	\matrix [draw=drawColor,anchor=north west] at (current bounding box.north east) {
+		\node [label=center:\underline{Legend:}] {}; \\
+		\node [abstract,label=right:Abstract Feature] {}; \\
+		\node [concrete,label=right:Concrete Feature] {}; \\
+		\node [mandatory,label=right:Mandatory] {}; \\
+		\node [optional,label=right:Optional] {}; \\
+			\filldraw[drawColor] (0.1,0) - +(-0,-0.2) - +(0.2,-0.2)- +(0.1,0);
+			\draw[drawColor] (0.1,0) -- +(-0.2, -0.4);
+			\draw[drawColor] (0.1,0) -- +(0.2,-0.4);
+			\fill[drawColor] (0,-0.2) arc (240:300:0.2);
+		\node [or,label=right:Or Group] {}; \\			\draw[drawColor] (0.1,0) -- +(-0.2, -0.4);
+			\draw[drawColor] (0.1,0) -- +(0.2,-0.4);
+			\draw[drawColor] (0,-0.2) arc (240:300:0.2);
+		\node [alternative,label=right:Alternative Group] {}; \\	};
+\end{forest}
