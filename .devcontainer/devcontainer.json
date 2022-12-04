@@ -1,0 +1,6 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+	"name": "Scala",
+	"image": "sbtscala/scala-sbt:openjdk-18.0.2.1_1.8.0_3.2.1"
+}
