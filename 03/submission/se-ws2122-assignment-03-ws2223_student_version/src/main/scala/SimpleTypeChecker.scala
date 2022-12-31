@@ -68,9 +68,13 @@ class SimpleTypeChecker extends TypeChecker[Expression, Type, Context] {
 
   override def checkType(expr: Expression, context: Context): Result = {
     expr match {
-      case Const(True)   => Success(BoolTy)
-      case Const(False)  => Success(BoolTy)
-      case Const(Num(_)) => Success(NumTy)
+      case Const(c) => {
+        val t = c match {
+          case True | False => BoolTy
+          case Num(_)       => NumTy
+        }
+        Success(t)
+      }
       case Id(id) =>
         context.typeForVar(id) match {
           case Some(t) => Success(t)

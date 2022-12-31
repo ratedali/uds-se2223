@@ -66,9 +66,31 @@ class VType(val types: Map[Type, Formula] = Map()) {
     */
   def dom(): Set[Type] = types.keys.toSet
 
+  /** Returns the disjunction of the presence condition for all types in the
+    * domain.
+    */
+  def theta(): Formula =
+    dom().map(formulaForType(_).get).fold(Formulas.False)(_ || _)
+
   /** Retrieve the formula associated with a certain type.
     */
   def formulaForType(t: Type): Option[Formula] = types.get(t)
+
+  /** Join two VTypes.
+    */
+  def join(other: VType): VType = {
+    val newTypes = dom()
+      .union(other.dom())
+      .map(t => {
+        (formulaForType(t), other.formulaForType(t)) match {
+          case (Some(f1), None)     => (t, f1)
+          case (None, Some(f2))     => (t, f2)
+          case (Some(f1), Some(f2)) => (t, f1 || f2)
+          case (_, _) => throw new Exception("Should not happen")
+        }
+      })
+    new VType(newTypes.toMap)
+  }
 
   override def toString: String = {
     types.toSeq
