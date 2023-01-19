@@ -4,5 +4,17 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
     "ghcr.io/devcontainers/features/anaconda:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-toolsai.jupyter",
+        "GitHub.copilot",
+        "eamodio.gitlens",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
   }
 }
